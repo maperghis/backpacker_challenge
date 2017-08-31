@@ -28,7 +28,7 @@ their eyes and their nationality
 - Phone (string)
 - States/Territories Visited (list)
 - Distance travelled in kilometers (integer)
-- Mode of transport (list) [car,bus,train,aeroplane,boat]
+- Mode of transport (list)
 - Days spent travelling (integer)
 - Working (boolean)
 
@@ -42,5 +42,13 @@ their eyes and their nationality
 - Northern Australia (NT)
 - Tasmania (TAS)
 - Australia Capital Territory (ACT)
+
+### 3. Mode of Transport
+
+- car
+- bus
+- train
+- aeroplane
+- boat
 
 ## Solution
