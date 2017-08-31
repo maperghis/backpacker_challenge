@@ -5,7 +5,7 @@ and for holiday. The Government of Australia have asked me to develop a backend
 web application to discover more about the backpackers and where they are
 spending their time. They have provided me with two json files which give
 information about some of the backpackers in Australia (i.e. name, gender,
-nationality, states visited, days traveling) and the list of all the seven
+nationality, states visited, days traveling) and the list of all the eight
 states and territories in Australia. I will implement the solution in Python
 using the web framework Django.
 
@@ -41,5 +41,6 @@ their eyes and their nationality
 - Western Australia (WA)
 - Northern Australia (NT)
 - Tasmania (TAS)
+- Australia Capital Territory (ACT)
 
 ## Solution
