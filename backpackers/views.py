@@ -5,15 +5,13 @@ from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework import generics
 
 
-class PersonList(APIView):
+class PersonList(generics.ListAPIView):
     '''List all the people'''
-
-    def get(self, request):
-        people = Person.objects.all()
-        serializer = PersonSerializer(people, many=True)
-        return Response(serializer.data)
+    queryset = Person.objects.all()
+    serializer_class = PersonSerializer
 
 
 class PersonDetail(APIView):
@@ -32,49 +30,27 @@ class PersonDetail(APIView):
         return Response(serializer.data)
 
 
-class StateList(APIView):
+class StateList(generics.ListAPIView):
     '''List all the states'''
-
-    def get(self, request):
-        states = State.objects.all()
-        serializer = StateSerializer(states, many=True)
-        return Response(serializer.data)
+    queryset = State.objects.all()
+    serializer_class = StateSerializer
 
 
-class StateDetail(APIView):
+class StateDetail(generics.RetrieveAPIView):
     '''Retrieve a state instance'''
-
-    def getObject(self, name):
-        try:
-            return State.objects.get(name=name)
-        except State.DoesNotExist as exc:
-            raise Http404
-
-    def get(self, request, name):
-        state = self.getObject(name)
-        serializer = StateSerializer(state)
-        return Response(serializer.data)
+    queryset = State.objects.all()
+    serializer_class = StateSerializer
+    lookup_field = 'name'
 
 
-class TransportList(APIView):
+class TransportList(generics.ListAPIView):
     '''Retrieve all the transport modes'''
-
-    def get(self, request):
-        modes = Transport.objects.all()
-        serializer = TransportSerializer(modes, many=True)
-        return Response(serializer.data)
+    queryset = Transport.objects.all()
+    serializer_class = TransportSerializer
 
 
-class TransportDetail(APIView):
+class TransportDetail(generics.RetrieveAPIView):
     '''Retrieve a transport instance'''
-
-    def getObject(self, mode):
-        try:
-            return Transport.objects.get(mode=mode)
-        except Transport.DoesNotExist as exc:
-            raise Http404
-
-    def get(self, request, mode):
-        name = self.getObject(mode)
-        serializer = TransportSerializer(name)
-        return Response(serializer.data)
+    queryset = Transport.objects.all()
+    serializer_class = TransportSerializer
+    lookup_field = 'mode'
