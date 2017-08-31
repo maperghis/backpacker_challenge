@@ -2,6 +2,18 @@ from django.db import models
 from django.core.validators import RegexValidator, MinValueValidator, \
     MaxValueValidator
 
+GENDER_CHOICES = (('M', 'Male'), ('F', 'Female'))
+EYE_COLOUR_CHOICES = (('Br', 'Brown'), ('Bl', 'Blue'))
+NATIONALITY_CHOICES = (
+    ('Br', 'British'),
+    ('Fr', 'French'),
+    ('Gr', 'German'),
+    ('Sp', 'Spanish'),
+    ('It', 'Italian'),
+    ('Sw', 'Swiss'),
+    ('Cn', 'Canadian'),
+)
+
 
 class State(models.Model):
     name = models.CharField(max_length=300,
@@ -20,17 +32,6 @@ class Transport(models.Model):
 
 
 class Person(models.Model):
-    GENDER_CHOICES = (('M', 'Male'), ('F', 'Female'))
-    EYE_COLOUR_CHOICES = (('Br', 'Brown'), ('Bl', 'Blue'))
-    NATIONALITY_CHOICES = (
-        ('Br', 'British'),
-        ('Fr', 'French'),
-        ('Gr', 'German'),
-        ('Sp', 'Spanish'),
-        ('It', 'Italian'),
-        ('Sw', 'Swiss'),
-        ('Cn', 'Canadian'),
-    )
     firstName = models.CharField(max_length=300, verbose_name="first name")
     lastName = models.CharField(max_length=300, verbose_name="last name")
     age = models.IntegerField(validators=[MinValueValidator(18),
