@@ -31,9 +31,6 @@ class Person(models.Model):
         ('Sw', 'Swiss'),
         ('Cn', 'Canadian'),
     )
-    phoneRegex = RegexValidator(regex=r'^\+?1?\d{9,15}$',
-        message="Phone number must be entered in the format: '+999999999'."
-                "Up to 15 digits allowed.")
     firstName = models.CharField(max_length=300, verbose_name="first name")
     lastName = models.CharField(max_length=300, verbose_name="last name")
     age = models.IntegerField(validators=[MinValueValidator(18),
@@ -44,8 +41,7 @@ class Person(models.Model):
     nationality = models.CharField(max_length=2, choices=NATIONALITY_CHOICES,
         default='Br')
     email = models.EmailField(max_length=254, verbose_name="email address")
-    phone = models.CharField(max_length=254, validators=[phoneRegex],
-        verbose_name="phone number")
+    phone = models.CharField(max_length=254, verbose_name="phone number")
     states = models.ManyToManyField(State, related_name="people_states")
     distance = models.IntegerField(default=1, validators=[MinValueValidator(1),
         MaxValueValidator(100000)])
