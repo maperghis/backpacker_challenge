@@ -6,6 +6,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import generics
+from rest_framework import viewsets
 
 
 class PersonList(generics.ListAPIView):
@@ -30,27 +31,15 @@ class PersonDetail(APIView):
         return Response(serializer.data)
 
 
-class StateList(generics.ListAPIView):
-    '''List all the states'''
-    queryset = State.objects.all()
-    serializer_class = StateSerializer
-
-
-class StateDetail(generics.RetrieveAPIView):
-    '''Retrieve a state instance'''
+class StateViewSet(viewsets.ReadOnlyModelViewSet):
+    '''List and retrieve states'''
     queryset = State.objects.all()
     serializer_class = StateSerializer
     lookup_field = 'name'
 
 
-class TransportList(generics.ListAPIView):
-    '''Retrieve all the transport modes'''
-    queryset = Transport.objects.all()
-    serializer_class = TransportSerializer
-
-
-class TransportDetail(generics.RetrieveAPIView):
-    '''Retrieve a transport instance'''
+class TransportViewSet(viewsets.ReadOnlyModelViewSet):
+    '''List and retrieve transport modes'''
     queryset = Transport.objects.all()
     serializer_class = TransportSerializer
     lookup_field = 'mode'

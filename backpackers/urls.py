@@ -1,12 +1,16 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import patterns, url, include
 from backpackers import views
+from rest_framework.routers import DefaultRouter
+
+# Create a router and register our viewsets with it.
+router = DefaultRouter()
+router.register(r'state', views.StateViewSet)
+router.register(r'transport', views.TransportViewSet)
+
 
 urlpatterns = patterns('',
     url(r'^person/$', views.PersonList.as_view()),
     url(r'^person/(?P<name>[a-zA-Z]+\s[a-zA-Z]+)/$',
         views.PersonDetail.as_view()),
-    url(r'^state/$', views.StateList.as_view()),
-    url(r'^state/(?P<name>[a-zA-Z]+)/$', views.StateDetail.as_view()),
-    url(r'^transport/$', views.TransportList.as_view()),
-    url(r'^transport/(?P<mode>[a-zA-Z]+)/$', views.TransportDetail.as_view()),
+    url(r'^', include(router.urls)),
     )
