@@ -32,8 +32,8 @@ class ResourceFetcher(object):
         return data
 
 
-class PeopleFetcher(ResourceFetcher):
-    '''Fetcher for the people data'''
+class PersonFetcher(ResourceFetcher):
+    '''Fetcher for the person data'''
     FILE = 'person.json'
 
 

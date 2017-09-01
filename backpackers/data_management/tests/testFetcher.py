@@ -1,10 +1,10 @@
 from django.test import TestCase
-from backpackers.data_management.fetcher import PeopleFetcher
+from backpackers.data_management.fetcher import PersonFetcher
 
 
 class TestFetcher(TestCase):
     '''Tests for the fetcher class'''
 
     def test_getData(self):
-        fetcher = PeopleFetcher()
+        fetcher = PersonFetcher()
         self.assertIsInstance(fetcher.getData(), list)
