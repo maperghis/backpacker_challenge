@@ -1,3 +1,10 @@
+#!/usr/bin/env python
+"""
+:created on: 31-08-2017
+:modified on: 11-09-2017
+:author: Miranda Aperghis <miranda>
+:contact: miranda.aperghis@gmail.com
+"""
 from django.db import models
 from django.core.validators import RegexValidator, MinValueValidator, \
     MaxValueValidator
@@ -16,6 +23,7 @@ NATIONALITY_CHOICES = (
 
 
 class State(models.Model):
+    """State model"""
     name = models.CharField(max_length=300,
             verbose_name="name of state or territory")
 
@@ -24,6 +32,7 @@ class State(models.Model):
 
 
 class Transport(models.Model):
+    """Transport model"""
     mode = models.CharField(max_length=300,
             verbose_name="mode of transport")
 
@@ -32,6 +41,7 @@ class Transport(models.Model):
 
 
 class Person(models.Model):
+    """Person model"""
     firstName = models.CharField(max_length=300, verbose_name="first name")
     lastName = models.CharField(max_length=300, verbose_name="last name")
     age = models.IntegerField(validators=[MinValueValidator(18),

@@ -1,3 +1,10 @@
+#!/usr/bin/env python
+"""
+:created on: 31-08-2017
+:modified on: 11-09-2017
+:author: Miranda Aperghis <miranda>
+:contact: miranda.aperghis@gmail.com
+"""
 from django.conf import settings
 import json
 import os
@@ -8,7 +15,7 @@ class InvalidResourceError(Exception):
 
 
 class ResourceFetcher(object):
-    '''Base class for fetching json data from a file'''
+    """Base class for fetching json data from a file"""
     FILE = None
     RESOURCE_DIR = os.path.join(settings.BASE_DIR, 'resources')
 
@@ -17,7 +24,7 @@ class ResourceFetcher(object):
         self._file = os.path.join(self.RESOURCE_DIR, self.FILE)
 
     def getData(self):
-        '''Load the json file and return the resulting python object'''
+        """Load the json file and return the resulting python object"""
         try:
             with open(self._file, 'r') as f:
                 content = f.read()
@@ -33,12 +40,12 @@ class ResourceFetcher(object):
 
 
 class PersonFetcher(ResourceFetcher):
-    '''Fetcher for the person data'''
+    """Fetcher for the person data"""
     FILE = 'person.json'
 
 
 class StateFetcher(ResourceFetcher):
-    '''Fetcher for the state data'''
+    """Fetcher for the state data"""
     FILE = 'state.json'
 
 
